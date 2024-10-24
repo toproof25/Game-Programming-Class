@@ -1,1 +1,1 @@
-# Game-Programming-Class
+# 게임 프로그래밍 중간고사 과제
