@@ -41,6 +41,9 @@
 *.VC.db
 *.VC.opendb
 
+ToonTanks/.vscode/*
+ToonTanks/.vs/*
+
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
