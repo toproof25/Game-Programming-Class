@@ -15,6 +15,14 @@ public:
     // 기본 생성자: Pawn의 기본 값을 설정합니다.
     ABasePawn();
 
+    // 공격력 및 공격력 업그레이드 함수
+	float AttackDamage = 10.f;
+	void SetAttackDamage(float value);
+
+    // 스피드 및 스피드 업그레이드 함수
+	float Speed = 400.f;
+	void SetSpeed(float value);
+
     // 죽을 때 실행하는 함수 
     void HandleDestruction();
 

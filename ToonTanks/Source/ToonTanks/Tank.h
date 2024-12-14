@@ -26,6 +26,7 @@ class TOONTANKS_API ATank : public ABasePawn
 		APlayerController* GetTankPlayerController() const { return TankPlayerController; }
 
 		bool bAlive = true;
+		
 
 	protected:
 		// Called when the game starts or when spawned
@@ -39,8 +40,8 @@ class TOONTANKS_API ATank : public ABasePawn
 		UPROPERTY(VisibleAnywhere, Category = "Components")
 		class UCameraComponent* Camera;
 
-		UPROPERTY(EditAnywhere, Category = "Movement")
-		float Speed = 400.f;
+		//UPROPERTY(EditAnywhere, Category = "Movement")
+		//float Speed = 400.f;
 
 		UPROPERTY(EditAnywhere, Category = "Movement")
 		float TurnRate = 45.f;
@@ -50,4 +51,5 @@ class TOONTANKS_API ATank : public ABasePawn
 		void Turn(float Value);
 
 		APlayerController* TankPlayerController;
+
 };

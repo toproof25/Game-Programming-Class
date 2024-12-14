@@ -39,8 +39,8 @@ private:
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 	// 데미지 설정 
-	UPROPERTY(EditAnywhere)
-	float Damage = 50.f;
+	//UPROPERTY(EditAnywhere)
+	//float Damage = 50.f;
 
 	// 파티클 (히트 발생하면면)
 	UPROPERTY(EditAnywhere, Category = "Combat")

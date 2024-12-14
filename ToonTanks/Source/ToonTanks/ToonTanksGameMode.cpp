@@ -78,7 +78,7 @@ void AToonTanksGameMode::HandleGameStart()
     FTimerHandle PlayerEnableTimerHandle;
     FTimerDelegate PlayerEnableTimerDelegate = FTimerDelegate::CreateUObject(
       ToonTanksPlayerController,
-      &AToonTanksPlayerController :: SetPlayerEnabledState,
+      &AToonTanksPlayerController::SetPlayerEnabledState,
       true
     );
     // 타이머를 실행함 

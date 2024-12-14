@@ -68,8 +68,20 @@ void ABasePawn::HandleDestruction()
 	{
 		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
 	}
-
 }
+
+// 스피드 value만큼 +
+void ABasePawn::SetSpeed(float value)
+{
+    Speed += value;
+}
+
+// 공격력 증가
+void ABasePawn::SetAttackDamage(float value)
+{
+    AttackDamage += value;
+}
+
 
 // 발사 함수 
 void ABasePawn::Fire()

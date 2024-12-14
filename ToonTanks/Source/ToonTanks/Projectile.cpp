@@ -2,6 +2,8 @@
 
 
 #include "Projectile.h"
+#include "BasePawn.h"
+#include "Tank.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 
@@ -69,17 +71,21 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 		return;	
 	}
 
+
+	// 탱크의 공격 수치를 가져옴 
+	float AttackDamage = Cast<ABasePawn>(MyOwner)->AttackDamage;
+
 	// 소유자의 컨트롤러를 가져옴 
 	AController* MyOwnerInstigator = MyOwner->GetInstigatorController();
 
 	// 피해 유형을 가져옴 -> 화염이냐 총알이냐 등 
 	UClass* DamageTypeClass = UDamageType::StaticClass();
 
-	// Hit액터가 존재하고, 자신이 아니면서, 내 소유자도 아닐 경우 
+	// Hit액터가 존재하고, 자신이 아니면서, 내 소유자도 아닐 경우
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
 		// Hit액터에게 피해를 적용 (누가 맞음?, 데미지, 누가 때림?, 뭐로 맞음?, 타박상이야 총상이야 뭐야) 
-		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
+		UGameplayStatics::ApplyDamage(OtherActor, AttackDamage, MyOwnerInstigator, this, DamageTypeClass);
 
 		// OnHit시 파티클 재생
 		if(HitParticle)

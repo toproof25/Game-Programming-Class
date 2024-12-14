@@ -22,6 +22,7 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 	TankPlayerController = Cast<APlayerController>(GetController());
+  Speed = 400.f;
 }
 
 void ATank::Tick(float DeltaTime)
@@ -39,8 +40,9 @@ void ATank::Tick(float DeltaTime)
     RotateTurret(HitResult.ImpactPoint);
     //DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 25.f, 12, FColor::Red, false, -1.f);
   }
-
 }
+
+
 
 void ATank::HandleDestruction()
 {
@@ -50,9 +52,6 @@ void ATank::HandleDestruction()
    SetActorTickEnabled(false);
    bAlive = false;
 }
-
-
-
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
