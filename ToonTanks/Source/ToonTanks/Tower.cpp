@@ -86,7 +86,7 @@ void ATower::UpgradeTower(float Difficulty)
 			FireRate = MinFireRate;
 		}
     
-	  UE_LOG(LogTemp, Warning, TEXT("Tower! %f %f %f"), AttackDamage, Speed, FireRate);
+	  //UE_LOG(LogTemp, Warning, TEXT("Tower! %f %f %f"), AttackDamage, Speed, FireRate);
     GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &ATower::CheckFireCondition, FireRate, true);
 }
 
@@ -97,7 +97,7 @@ void ATower::HandleDestruction()
 {
 	 // 효과 사운드
    Super::HandleDestruction();
-   UE_LOG(LogTemp, Log, TEXT("Tower cpppppp 죽는단다낟나단다낟낟"));
+   //UE_LOG(LogTemp, Log, TEXT("Tower cpppppp 죽는단다낟나단다낟낟"));
    Destroy();
 }
 

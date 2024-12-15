@@ -13,7 +13,7 @@ AAttackPowerUpItem::AAttackPowerUpItem()
 void AAttackPowerUpItem::BeginPlay()
 {
 	Super::BeginPlay();
-  UE_LOG(LogTemp, Warning, TEXT("아이템 AttackPowerUpItem"));
+  //UE_LOG(LogTemp, Warning, TEXT("아이템 AttackPowerUpItem"));
 }
 
 void AAttackPowerUpItem::Tick(float DeltaTime)
@@ -25,7 +25,7 @@ void AAttackPowerUpItem::Tick(float DeltaTime)
 // 공격력 up
 void AAttackPowerUpItem::GetItem()
 {
-	UE_LOG(LogTemp, Warning, TEXT("AttackPowerUpItem ! 충돌한 액터: %s"), *Tank->GetName());
+	//UE_LOG(LogTemp, Warning, TEXT("AttackPowerUpItem ! 충돌한 액터: %s"), *Tank->GetName());
   if (Tank)
   {
     Tank->SetAttackDamage(10.0);

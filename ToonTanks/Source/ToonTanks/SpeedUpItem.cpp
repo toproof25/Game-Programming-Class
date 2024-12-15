@@ -26,10 +26,10 @@ void ASpeedUpItem::Tick(float DeltaTime)
 // Speed Up
 void ASpeedUpItem::GetItem()
 {
-	UE_LOG(LogTemp, Warning, TEXT("ASpeedUpItem ! 충돌한 액터: %s"), *Tank->GetName());
+	//UE_LOG(LogTemp, Warning, TEXT("ASpeedUpItem ! 충돌한 액터: %s"), *Tank->GetName());
   if (Tank)
   {
-    Tank->SetSpeed(10);
+    Tank->SetSpeed(20.f);
     Destroy();
   }
 }

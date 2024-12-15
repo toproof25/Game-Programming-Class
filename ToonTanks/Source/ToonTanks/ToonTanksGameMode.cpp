@@ -61,7 +61,7 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
     SpawnRandomItem(DestroyedTower->GetActorLocation());
     
     // 적 터렛의 HandleDestruction를 실행
-    UE_LOG(LogTemp, Log, TEXT("Tower gamemodemode 죽는단다낟나단다낟낟"));
+    //UE_LOG(LogTemp, Log, TEXT("Tower gamemodemode 죽는단다낟나단다낟낟"));
     DestroyedTower->HandleDestruction();
 
     // 총 터렛 개수를 -1하고, 만일 0이라면 게임 종료

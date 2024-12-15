@@ -13,7 +13,7 @@ AHeathRecoveryItem::AHeathRecoveryItem()
 void AHeathRecoveryItem::BeginPlay()
 {
 	Super::BeginPlay();
-  UE_LOG(LogTemp, Warning, TEXT("아이템 AHeathRecoveryItem"));
+  //UE_LOG(LogTemp, Warning, TEXT("아이템 AHeathRecoveryItem"));
 }
 
 void AHeathRecoveryItem::Tick(float DeltaTime)
@@ -31,7 +31,7 @@ void AHeathRecoveryItem::GetItem()
     if (UHealthComponent* health = Cast<UHealthComponent>(Tank->FindComponentByClass<UHealthComponent>()))
     { 
       // HealthComponent에 있는 HealthRecovery(float value)함수를 통해 값을 넣어서 체력 회복
-	    UE_LOG(LogTemp, Warning, TEXT("체력 회복 ! AHeathRecoveryItem: %s"), *Tank->GetName());
+	    //UE_LOG(LogTemp, Warning, TEXT("체력 회복 ! AHeathRecoveryItem: %s"), *Tank->GetName());
       health->HealthRecovery(50.f);
       Destroy();
     }

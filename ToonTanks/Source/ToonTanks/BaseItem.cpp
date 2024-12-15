@@ -80,7 +80,7 @@ void ABaseItem::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimiti
 		return;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("아이템 OnHit!"));
+	//UE_LOG(LogTemp, Warning, TEXT("아이템 OnHit!"));
 
 	// 플레이어와 충돌하면 GetItem을 실행
 	if (!bIsGet && OtherActor && OtherActor != this && OtherActor == Tank)

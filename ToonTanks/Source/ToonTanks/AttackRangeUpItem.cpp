@@ -12,7 +12,7 @@ AAttackRangeUpItem::AAttackRangeUpItem()
 void AAttackRangeUpItem::BeginPlay()
 {
 	Super::BeginPlay();
-  UE_LOG(LogTemp, Warning, TEXT("아이템 AttackRangeUpItem"));
+  //UE_LOG(LogTemp, Warning, TEXT("아이템 AttackRangeUpItem"));
 }
 
 void AAttackRangeUpItem::Tick(float DeltaTime)
@@ -24,7 +24,7 @@ void AAttackRangeUpItem::Tick(float DeltaTime)
 // 공격 범위 업그레이드
 void AAttackRangeUpItem::GetItem()
 {
-	UE_LOG(LogTemp, Warning, TEXT("AttackRangeUpItem ! : %s"), *Tank->GetName());
+	//UE_LOG(LogTemp, Warning, TEXT("AttackRangeUpItem ! : %s"), *Tank->GetName());
   if (Tank)
   {
     Tank->SetAttackRange(50.f);
