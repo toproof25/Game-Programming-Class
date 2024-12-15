@@ -20,6 +20,8 @@ public:
 
 	// 상속받은 함수 
 	void HandleDestruction();
+	
+	void UpgradeTower(float value);
 
 protected:
 	virtual void BeginPlay() override;
@@ -35,8 +37,14 @@ private:
   // 공격 속도 
 	FTimerHandle FireRateTimerHandle;
 	float FireRate = 2.f;
+	float MinFireRate = 0.2f;
 	void CheckFireCondition();
+
+
 
 	// 공격 범위인지 체크하는 함수 
 	bool InFireRange();
+
+	// 공격 범위가 아니라면 플레이어에게 이동동
+	void FollowPlayer();
 };

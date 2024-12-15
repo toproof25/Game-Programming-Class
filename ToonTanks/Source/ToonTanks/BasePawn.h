@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+//#include "GameFramework/Character.h"
 #include "GameFramework/Pawn.h"
 #include "BasePawn.generated.h"
 
@@ -22,6 +23,13 @@ public:
     // 스피드 및 스피드 업그레이드 함수
 	float Speed = 400.f;
 	void SetSpeed(float value);
+
+    // 어택 폭발 데미지 범위
+	float AttackRange = 100.f;
+    void SetAttackRange(float value);
+
+    // 발사 수 업글 함수
+    void SetProjectileCount(int32 value);
 
     // 죽을 때 실행하는 함수 
     void HandleDestruction();
@@ -59,6 +67,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TSubclassOf<class UCameraShakeBase> DeathCameraShakeClass;
 
+    int32 MaxProjectileCount = 20;
+    int32 ProjectileCount = 1;
 
 protected:
     // 터렛을 LookAtTarget 방향으로 회전 

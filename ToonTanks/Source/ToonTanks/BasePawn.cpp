@@ -82,20 +82,75 @@ void ABasePawn::SetAttackDamage(float value)
     AttackDamage += value;
 }
 
+void ABasePawn::SetProjectileCount(int32 value)
+{
+    if (ProjectileCount + value >= MaxProjectileCount)
+    {
+        ProjectileCount = MaxProjectileCount;
+    }
+    else
+    {
+        ProjectileCount += value;
+    }
+}
+
+void ABasePawn::SetAttackRange(float value)
+{
+    AttackRange += value;
+}
+
 
 // 발사 함수 
 void ABasePawn::Fire()
 {
-    // 발사체 스폰 위치 변수를 이용하여 위치, 회전을 가져온다 
-    FVector Lotation = ProjectileSpawnPoint->GetComponentLocation();
+    // 발사체 스폰 위치 변수를 이용하여 위치, 회전을 가져온다
+    FVector Location = ProjectileSpawnPoint->GetComponentLocation();
     FRotator Rotation = ProjectileSpawnPoint->GetComponentRotation();
 
-    // 발사체를 SpawnActor로 (스폰할 클래스, 위치, 회전) 스폰한다 
-    auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Lotation, Rotation);
+    // 중심 회전 각도 (기준점)
+    float BaseYaw = Rotation.Yaw;
 
-    // 소유자를 스폰한 액터로 설정함 
-    Projectile->SetOwner(this);
+    // 퍼지는 각도를 설정 (예: ±10도)
+    float SpreadAngle = 10.f;
+
+    for (int32 i = 0; i < ProjectileCount; ++i)
+    {
+        // 발사 방향 계산
+        float OffsetYaw = SpreadAngle * (i - (ProjectileCount - 1) / 2.0f); // 중심 기준 좌우로 퍼지도록 계산
+        FRotator SpreadRotation = Rotation;
+        SpreadRotation.Yaw = BaseYaw + OffsetYaw;
+
+        // 발사체를 SpawnActor로 (스폰할 클래스, 위치, 회전) 스폰한다
+        AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Location, SpreadRotation);
+
+        if (Projectile)
+        {
+            // 소유자를 스폰한 액터로 설정함
+            Projectile->SetOwner(this);
+        }
+    }
 
     // 디버그용으로 탄환 생성 위치에 구체를 그릴 수 있습니다 (주석 처리됨).
-    // DrawDebugSphere(GetWorld(), Lotation, 25.f, 12, FColor::Blue, false, 3.f);
+    // DrawDebugSphere(GetWorld(), Location, 25.f, 12, FColor::Blue, false, 3.f);
 }
+
+
+
+/*
+    // 발사 함수 
+    void ABasePawn::Fire()
+    {
+        // 발사체 스폰 위치 변수를 이용하여 위치, 회전을 가져온다 
+        FVector Lotation = ProjectileSpawnPoint->GetComponentLocation();
+        FRotator Rotation = ProjectileSpawnPoint->GetComponentRotation();
+
+        // 발사체를 SpawnActor로 (스폰할 클래스, 위치, 회전) 스폰한다 
+        auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Lotation, Rotation);
+
+        // 소유자를 스폰한 액터로 설정함 
+        Projectile->SetOwner(this);
+
+        // 디버그용으로 탄환 생성 위치에 구체를 그릴 수 있습니다 (주석 처리됨).
+        // DrawDebugSphere(GetWorld(), Lotation, 25.f, 12, FColor::Blue, false, 3.f);
+    }
+*/

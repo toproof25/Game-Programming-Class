@@ -39,6 +39,23 @@ void UHealthComponent::BeginPlay()
 	ToonTanksGameMode = Cast<AToonTanksGameMode>(UGameplayStatics::GetGameMode(this));
 }
 
+
+void UHealthComponent::HealthRecovery(float value)
+{
+	UE_LOG(LogTemp, Warning, TEXT("HealthRecovery ! : %f"), Health);
+	if (Health + value >= MaxHealth)
+	{
+		Health = MaxHealth;
+	}
+	else 
+	{
+		Health += value;
+	}
+	UE_LOG(LogTemp, Warning, TEXT("HealthRecovery ! : %f"), Health);
+
+}
+
+
 // 데미지를 입는 함수
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Instigator, AActor* DamageCauser)
 {
@@ -46,7 +63,7 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 
 	// 현재 체력에 데미지를 적용용
 	Health -= Damage;
-	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+	UE_LOG(LogTemp, Warning, TEXT("Health: %f %s ----"), Health, *DamagedActor->GetName());
 	UE_LOG(LogTemp, Log, TEXT("Tower gamemodemode 죽는단다낟나단다낟낟 %s"), *DamagedActor->GetName());
 
 	// 0이하가 된다면, 맞는 액터를 ActorDied함수 파라미터로 보낸다

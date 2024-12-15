@@ -16,14 +16,18 @@ public:
     // 컴포넌트의 기본값을 설정합니다.
     UHealthComponent();
 
+    void HealthRecovery(float value);
+
+    // 체력 (Blueprint에서 수정 가능)
+    UPROPERTY(EditAnywhere)
+    float MaxHealth = 100.f;
+
 protected:
     // 게임 시작 시 호출되는 함수입니다.
     virtual void BeginPlay() override;
 
 private:
-    // 체력 (Blueprint에서 수정 가능)
-    UPROPERTY(EditAnywhere)
-    float MaxHealth = 100.f;
+
 
     // 현재 체력
     float Health = 0.f;
