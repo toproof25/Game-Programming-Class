@@ -93,8 +93,8 @@ void AToonTanksGameMode::SpawnRandomItem(const FVector& SpawnLocation)
 void AToonTanksGameMode::HandleGameStart()
 {
   // 총 터렛의 수를 설정 
-  TargetTowers = GetTargetTowerCount();
-  GetTowerSpawerCount(TowerSpawners);
+  //TargetTowers = GetTargetTowerCount();
+  //GetTowerSpawerCount(TowerSpawners);
 
   RemoveTowers = 0;
 
@@ -140,7 +140,7 @@ int32 AToonTanksGameMode::GetTargetTowerCount()
 }
 
 
-// 적의 수를 반환
+// 배치된 스포너를 배열에 저장
 void AToonTanksGameMode::GetTowerSpawerCount(TArray<ATowerSpawner*> &TowerSpawner)
 {
 

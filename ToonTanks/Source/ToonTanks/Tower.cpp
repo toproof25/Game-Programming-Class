@@ -30,15 +30,16 @@ void ATower::Tick(float DeltaTime)
     return;
   }
 
+  // 플레이어 방향으로 총구를 회전
+  RotateTurret(Tank->GetActorLocation());
+
   // Tick마다 범위를 체크 
-  if (InFireRange())
+  if (!InFireRange())
   {
-    RotateTurret(Tank->GetActorLocation()); // 범위 내면 해당 방향으로 회전 쫒아가기
-  }
-  else
-  {
+    // 공격 범위가 아니면 쫒아가기
     FollowPlayer();
   }
+
 }
 
 void ATower::FollowPlayer()
@@ -72,7 +73,7 @@ void ATower::UpgradeTower(float Difficulty)
     FireRate /= Difficulty;
 
     // 체력 컴포넌트 가져오기
-    if (UHealthComponent* health = Cast<UHealthComponent>(Tank->FindComponentByClass<UHealthComponent>()))
+    if (UHealthComponent* health = Cast<UHealthComponent>(FindComponentByClass<UHealthComponent>()))
     { 
       // 최대 체력 수정 
       health->MaxHealth *= Difficulty;

@@ -47,7 +47,7 @@ void ATowerSpawner::WorldSpawnTower()
 	}
 }
 
-// 난이도 상승 - 스포너의 스폰 시간 단축 -> Difficulty 상승승
+// 난이도 상승 - 스포너의 스폰 시간 단축 -> Difficulty 상승 
 void ATowerSpawner::AdjustSpawnRate()
 {
     // 타이머를 재설정하기 위한 절차
