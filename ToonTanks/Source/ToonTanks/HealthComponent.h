@@ -22,6 +22,10 @@ public:
     UPROPERTY(EditAnywhere)
     float MaxHealth = 100.f;
 
+    // 현재 체력
+    UPROPERTY(EditAnywhere)
+    float Health = 0.f;
+
 protected:
     // 게임 시작 시 호출되는 함수입니다.
     virtual void BeginPlay() override;
@@ -29,8 +33,7 @@ protected:
 private:
 
 
-    // 현재 체력
-    float Health = 0.f;
+
 
     // 데미지를 받았을 때 호출되는 함수 (Damage 이벤트에 바인딩) - 누가 맞았냐, 데미지 수치, 상처가 뭐냐(타박, 총알, 화염 등), 누가 때렸냐, 뭐로 맞았냐 
     UFUNCTION()
